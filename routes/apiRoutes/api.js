@@ -53,4 +53,26 @@ router.put("/workouts/:id", async ({ body, params }, res) => {
     res.status(500).json(err);
   }
 });
+
+// get/api/workouts/range : give last 7 days workouts along with total duration
+router.get("/workouts/range", (req, res) => {
+  Workout.aggregate([
+    {
+      $addFields: {
+        totalDuration: {
+          $sum: "$exercises.duration",
+        },
+      },
+    },
+  ])
+    .sort({ day: -1 })
+    .limit(7)
+    .then((dbWorkouts) => {
+      console.log(dbWorkouts);
+      res.json(dbWorkouts);
+    })
+    .catch((err) => {
+      res.json(err);
+    });
+});
 module.exports = router;
