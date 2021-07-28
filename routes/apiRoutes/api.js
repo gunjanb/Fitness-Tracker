@@ -35,4 +35,22 @@ router.post("/workouts", async ({ body }, res) => {
   }
 });
 
+//update /api/workouts/id  :id is the id of the workout
+//in which new exercise will get added if we hit continue button
+router.put("/workouts/:id", async ({ body, params }, res) => {
+  try {
+    const dbworkoutdata = await Workout.findByIdAndUpdate(
+      params.id,
+      { $push: { exercises: body } },
+      { new: true, runValidators: true }
+    );
+    if (!dbworkoutdata) {
+      res.status(404).json({ msg: "no workout found with this id" });
+      return;
+    }
+    res.json(dbWorkout);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 module.exports = router;
