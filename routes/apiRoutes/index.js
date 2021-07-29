@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const api = require("./api");
 
-router.use("/workouts", api);
+router.use("/", api);
 
 module.exports = router;
