@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Workout = require("../../models/workout.js");
 // GET /api/workouts : get all workout along with totalduration of workout
-router.get("/workouts", async (req, res) => {
+router.get("/", async (req, res) => {
   console.log("here at backend");
   try {
     const dbworkoutdata = await Workout.aggregate([
@@ -22,7 +22,7 @@ router.get("/workouts", async (req, res) => {
 });
 
 // POST/api/workouts  : create a new workout
-router.post("/workouts", async ({ body }, res) => {
+router.post("/", async ({ body }, res) => {
   console.log("here at backend for creating new workout");
   try {
     console.log(body);
@@ -37,7 +37,7 @@ router.post("/workouts", async ({ body }, res) => {
 
 //update /api/workouts/id  :id is the id of the workout
 //in which new exercise will get added if we hit continue button
-router.put("/workouts/:id", async ({ body, params }, res) => {
+router.put("/:id", async ({ body, params }, res) => {
   try {
     const dbworkoutdata = await Workout.findByIdAndUpdate(
       params.id,
@@ -55,7 +55,7 @@ router.put("/workouts/:id", async ({ body, params }, res) => {
 });
 
 // get/api/workouts/range : give last 7 days workouts along with total duration
-router.get("/workouts/range", (req, res) => {
+router.get("/range", (req, res) => {
   Workout.aggregate([
     {
       $addFields: {
