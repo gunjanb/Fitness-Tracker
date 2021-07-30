@@ -17,10 +17,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //serve static files
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 //connect to MongoDB
-mongoose.connect(process.env.MONGODB_URL || "mongodb://localhost/workout", {
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,
