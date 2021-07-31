@@ -42,7 +42,7 @@ When the user starts the application, they are given the option to create a new 
 
 - Mock up
 
-  ![gif for workout](./public/images/dashboard.jpg)
+  ![gif for workout](./public/images/fitnesstracker.gif)
 
 - Deployed Link at Heroku
 
