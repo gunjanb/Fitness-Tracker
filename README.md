@@ -40,9 +40,13 @@ When the user starts the application, they are given the option to create a new 
 
   ![CLI](./public/images/dashboard.jpg)
 
+- Mock up
+
+  ![gif for workout](./public/images/dashboard.jpg)
+
 - Deployed Link at Heroku
 
-  [View App Here]()
+  [View App Here](https://myfitness-tracker-123.herokuapp.com/)
 
 ## License
 
